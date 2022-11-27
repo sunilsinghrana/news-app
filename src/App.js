@@ -21,7 +21,7 @@ export default function App() {
       <Header />
       <Suspense fallback={<Spinner/>}>
       <Menu active={active} setCategory={setCategory} setActive={setActive} />
-      <NewsGrid category={category}/>
+      <NewsGrid/>
       </Suspense>
       <Footer/>
     </div>

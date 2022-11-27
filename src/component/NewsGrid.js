@@ -4,19 +4,21 @@ import { getAllArticle } from "../app/news/newsSlice";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 
-const NewsGrid = ({category}) => {
+const NewsGrid = () => {
   const dataItem = useSelector(getAllArticle);
   let response = "";
   response =
     dataItem.status === "ok" ? (
       dataItem.articles.map((item, id) => <Newsitem item={item} key={id} />)
     ) : (
-      <div className="text-center m-auto">
-        <Spinner/>
+      <div className="text-center">
       </div>
     );
   return (
     <div>
+      <div className="text-center my-6">
+      {dataItem.status !== 'ok' ? <Spinner/> : ''}
+      </div>
       <div className="px-4 w-full mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
         {response}
       </div>
